@@ -31,10 +31,10 @@ install.packages(c("tidyverse", "palmerpenguins", "ggrepel", "paletteer",
                    "systemfonts", "marquee", "patchwork"))
 ```
 
-- [tidyverse](https://tidyverse.org): Tidyverse collection of packages, including [ggplot2](https://ggplot2.tidyverse.org).
+- [tidyverse](https://tidyverse.org)
 - [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/): Data for the workshop.
-- [ggrepel](https://ggrepel.slowkow.com): To help anotate plots.
+- [ggrepel](https://ggrepel.slowkow.com): To help annotate plots.
 - [paletteer](https://emilhvitfeldt.github.io/paletteer/): Large collection of color palettes.
 - [systemfonts](https://systemfonts.r-lib.org): Enable R to find installed fonts.
 - [marquee](https://marquee.r-lib.org): Enable text formatting in ggplot2 using Markdown.
-- [patwork](https://patchwork.data-imaginist.com/index.html): Combine multiple plots into a single graphic.
+- [patchwork](https://patchwork.data-imaginist.com/index.html): Combine multiple plots into a single graphic.
