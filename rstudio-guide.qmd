@@ -45,7 +45,7 @@ RStudio has a powerful [**Data viewer**](https://docs.posit.co/ide/user/ide/guid
 - Click on the data frame in the Environment pane.
 - Run `View(data_name)` in the console.
 
-![Quickly view data frames in a spreadsheet-like environment by running `View(data_name)` or clicking on a data frame object in the environment pane on the right.](../files/dataviewer.png){#fig-dataviewer fig-alt="A screen shot of RStudio with a view of rectangular data on the left and the environment panel on the right."}
+![Quickly view data frames in a spreadsheet-like environment by running `View(data_name)` or clicking on a data frame object in the environment pane on the right.](./files/dataviewer.png){#fig-dataviewer fig-alt="A screen shot of RStudio with a view of rectangular data on the left and the environment panel on the right."}
 
 You can read the documentation for a function in the **Help tab**. RStudio even provides a link to run the examples found at the bottom of the help page. To get to the documentation for a function you can either:
 
@@ -55,7 +55,7 @@ You can read the documentation for a function in the **Help tab**. RStudio even 
 ## A reproducible workflow
 We need to make some important changes to the default settings in RStudio to ensure that R scripts remain the source of truth of your analysis not your environment. Go to `Tools -> Global Options` and **uncheck** Restore .RData into workspace at startup and set Save workspace to .RData on exit to `Never`.
 
-![RStudio Global Options: Set these options for the Workspace.](../files/rstudio-workspace.png){#fig-workspace width=50% fig-alt="A screen shot of the Settings window for RStudio."}
+![RStudio Global Options: Set these options for the Workspace.](./files/rstudio-workspace.png){#fig-workspace width=50% fig-alt="A screen shot of the Settings window for RStudio."}
 
 These settings make sure that your enviornment is cleared everytime you exit RStudio. This might seem like it is painful, but it is short-term pain for long-term gain. It will teach you to keep what you want to save in your R script so that you can always recreate objects or rerun analysis later. The *true source* for the analysis is your script; enviornmental objects can be recreated through the script. It is valuable to check this every once in a while by restarting R. You can then rerun your entire script to make sure that you have fully captured your analysis in the script.
 
