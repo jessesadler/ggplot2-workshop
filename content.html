@@ -171,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li>
 <a href="#warming-up-exploratory-plots" id="toc-warming-up-exploratory-plots" class="nav-link" data-scroll-target="#warming-up-exploratory-plots"><span class="header-section-number">4.2</span> Warming up: Exploratory plots</a>
   <ul class="collapse">
-<li><a href="#distribution-of-a-categorica-variable" id="toc-distribution-of-a-categorica-variable" class="nav-link" data-scroll-target="#distribution-of-a-categorica-variable"><span class="header-section-number">4.2.1</span> Distribution of a categorica variable</a></li>
+<li><a href="#distribution-of-a-categorical-variable" id="toc-distribution-of-a-categorical-variable" class="nav-link" data-scroll-target="#distribution-of-a-categorical-variable"><span class="header-section-number">4.2.1</span> Distribution of a categorical variable</a></li>
   <li><a href="#distribution-of-a-numeric-variable" id="toc-distribution-of-a-numeric-variable" class="nav-link" data-scroll-target="#distribution-of-a-numeric-variable"><span class="header-section-number">4.2.2</span> Distribution of a numeric variable</a></li>
   <li><a href="#visualizing-relationship-of-two-numeric-variables" id="toc-visualizing-relationship-of-two-numeric-variables" class="nav-link" data-scroll-target="#visualizing-relationship-of-two-numeric-variables"><span class="header-section-number">4.2.3</span> Visualizing relationship of two numeric variables</a></li>
   </ul>
@@ -186,6 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a href="#axes-scales-and-zooming" id="toc-axes-scales-and-zooming" class="nav-link" data-scroll-target="#axes-scales-and-zooming"><span class="header-section-number">4.4</span> Axes scales and zooming</a>
   <ul class="collapse">
 <li><a href="#zooming-vs-filtering" id="toc-zooming-vs-filtering" class="nav-link" data-scroll-target="#zooming-vs-filtering"><span class="header-section-number">4.4.1</span> Zooming vs filtering</a></li>
+  <li><a href="#save-the-plots-for-later" id="toc-save-the-plots-for-later" class="nav-link" data-scroll-target="#save-the-plots-for-later"><span class="header-section-number">4.4.2</span> Save the plots for later</a></li>
   </ul>
 </li>
   <li>
@@ -212,6 +213,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#system-fonts" id="toc-system-fonts" class="nav-link" data-scroll-target="#system-fonts"><span class="header-section-number">4.9.3</span> System fonts</a></li>
   </ul>
 </li>
+  <li>
+<a href="#saving-the-plot" id="toc-saving-the-plot" class="nav-link" data-scroll-target="#saving-the-plot"><span class="header-section-number">4.10</span> Saving the plot</a>
+  <ul class="collapse">
+<li><a href="#png-vs-pdf" id="toc-png-vs-pdf" class="nav-link" data-scroll-target="#png-vs-pdf"><span class="header-section-number">4.10.1</span> PNG vs PDF</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#putting-plots-together-with-patchwork" id="toc-putting-plots-together-with-patchwork" class="nav-link" data-scroll-target="#putting-plots-together-with-patchwork"><span class="header-section-number">4.11</span> Putting plots together with patchwork</a>
+  <ul class="collapse">
+<li><a href="#composing-plots" id="toc-composing-plots" class="nav-link" data-scroll-target="#composing-plots"><span class="header-section-number">4.11.1</span> Composing plots</a></li>
+  </ul>
+</li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">4.12</span> Conclusion</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -295,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <code>sex</code>: female and male</li>
 <li>
-<code>year</code>: Integeer from 2007 to 2009.</li>
+<code>year</code>: Integer from 2007 to 2009.</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -303,14 +317,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Note the existence of missing data in all but <code>species</code> and <code>island</code> columns. <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> gives a good overview of the data and the counts for the <code>species</code>, <code>island</code>, and <code>sex</code>.</p>
 </section><section id="warming-up-exploratory-plots" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="warming-up-exploratory-plots">
 <span class="header-section-number">4.2</span> Warming up: Exploratory plots</h2>
-<section id="distribution-of-a-categorica-variable" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="distribution-of-a-categorica-variable">
-<span class="header-section-number">4.2.1</span> Distribution of a categorica variable</h3>
+<section id="distribution-of-a-categorical-variable" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="distribution-of-a-categorical-variable">
+<span class="header-section-number">4.2.1</span> Distribution of a categorical variable</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">penguins</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -327,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">## (`stat_bin()`).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -343,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">## (`stat_density()`).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -358,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">## (`geom_point()`).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -408,12 +422,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">stat_count</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>This may not seem that interesting at first, but intermxing geoms and stats creates opportunities for plots that represent more complex forms of analysis, for instance a bar plot of the average body weight of the penguins by island. This can be written using either <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code>.</p>
+<p>This may not seem that interesting at first, but intermixing geoms and stats creates opportunities for plots that represent more complex forms of analysis, for instance a bar plot of the average body weight of the penguins by island. This can be written using either <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># geom with stat</span></span>
 <span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -430,10 +444,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="content_files/figure-html/bar-vs-stat-1.png" class="img-fluid" width="2400"></p>
+<p><img src="content_files/figure-html/bar-vs-stat-1.png" class="img-fluid"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="content_files/figure-html/bar-vs-stat-2.png" class="img-fluid" width="2400"></p>
+<p><img src="content_files/figure-html/bar-vs-stat-2.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -448,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>               width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="co"># Width of the error bars is 20% of the bars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -468,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>               width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="co"># Width of the error bars is 20% of the bars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -487,7 +501,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>                                          padding <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -522,7 +536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="cn">FALSE</span>, clip <span class="op">=</span> <span class="st">"off"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -534,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -556,12 +570,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">## (`geom_bar()`).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The result is clearly somethig we did not intend. This is because setting limits with <code>scale_x/y_*()</code> <strong>subsets data</strong>; all values outside the range become <code>NA</code>. This will lead to changes in the data for lines or polygons. To zoom in on the data you need to use <code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code> with the <code>xlim</code> or <code>ylim</code> argument.</p>
+<p>The result is clearly something we did not intend. This is because setting limits with <code>scale_x/y_*()</code> <strong>subsets data</strong>; all values outside the range become <code>NA</code>. This will lead to changes in the data for lines or polygons. To zoom in on the data you need to use <code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code> with the <code>xlim</code> or <code>ylim</code> argument.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html">expansion</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -569,7 +583,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2500</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="save-the-plots-for-later" class="level3" data-number="4.4.2"><h3 data-number="4.4.2" class="anchored" data-anchor-id="save-the-plots-for-later">
+<span class="header-section-number">4.4.2</span> Save the plots for later</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_last_plot.html">last_plot</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create similar plot with flipper_length_mm</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">flipper_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">## [1] 172</span></span>
+<span></span>
+<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"summary"</span>, fun <span class="op">=</span> <span class="st">"mean"</span>, width <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>           position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge2</a></span><span class="op">(</span>preserve <span class="op">=</span> <span class="st">"single"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"errorbar"</span>,</span>
+<span>               fun.data <span class="op">=</span> <span class="va">mean_se</span>,</span>
+<span>               width <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge2</a></span><span class="op">(</span>preserve <span class="op">=</span> <span class="st">"single"</span>,</span>
+<span>                                          padding <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html">expansion</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">150</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">p2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -578,33 +622,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">4.5</span> Axes scales and guides</h2>
 <p>Scales are the basis for <strong>guides</strong> that used to interpret the plot: axes and legends. Let’s create a scatterplot comparing the flipper length to the body mass of the penguins by species to provide a basis for looking more in depth at the guides of a plot.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
 <span>             y <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span>, </span>
 <span>                 shape <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
 <span>            na.rm <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>            size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span>            size <span class="op">=</span> <span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span>
 <span><span class="va">p</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <section id="labels" class="level3" data-number="4.5.1"><h3 data-number="4.5.1" class="anchored" data-anchor-id="labels">
 <span class="header-section-number">4.5.1</span> Labels</h3>
-<p>Firstly, we can change the lables of the x and y axes and the legend with <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code>. By providing the same label for <code>color</code> and <code>shape</code> the legend remains combined.</p>
+<p>Firstly, we can change the labels of the x and y axes and the legend with <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code>. By providing the same label for <code>color</code> and <code>shape</code> the legend remains combined.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Flipper length (mm)"</span>,</span>
 <span>       y <span class="op">=</span> <span class="st">"Body mass (g)"</span>,</span>
 <span>       color <span class="op">=</span> <span class="st">"Penguin species"</span>,</span>
 <span>       shape <span class="op">=</span> <span class="st">"Penguin species"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -613,37 +657,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">4.5.2</span> Axes breaks</h3>
 <p>To change the axis text and the grid lines you can use the <code>breaks</code> and <code>labels</code> arguments in <code>scale_x/y_*()</code>. <code>breaks</code> takes a numeric vector and <code>labels</code> takes a character vector. You can remove all <code>breaks</code> and <code>labels</code> with <code>NULL</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span>, breaks <span class="op">=</span> <span class="cn">NULL</span>, labels <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Body mass (g)"</span>, breaks <span class="op">=</span> <span class="cn">NULL</span>, labels <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>You can be quite creative with choosing breaks.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span>  </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">170</span>, <span class="fl">230</span>, by <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>,</span>
 <span>                     minor_breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">170</span>, <span class="fl">230</span>, by <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">13</span><span class="op">*</span><span class="fl">500</span>,</span>
 <span>                     minor_breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Or you can choose the number of breaks:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>n.breaks <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -652,7 +696,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">4.5.3</span> Axes labels: scales package</h3>
 <p>The <a href="https://scales.r-lib.org/">scales package</a> provides useful helpers for working with axes labels. The package is generally called using the <code>pkg_name::function()</code> structure.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span><span class="st">"Flipper length"</span>,</span>
 <span>                     n.breaks <span class="op">=</span> <span class="fl">4</span>,</span>
 <span>                     labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"mm"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -662,7 +706,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>                       suffix <span class="op">=</span> <span class="st">"kg"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -685,12 +729,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">4.6</span> Color scales</h2>
 <p>To style your plot and make it your own you will want to choose your own color palette. So far we have been using a discrete color palette (<code><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_color_discrete()</a></code>) and to keep things simpler, we will stick with that. We can use <code><a href="https://scales.r-lib.org/reference/pal_hue.html">scales::hue_pal()</a></code> to recreate or access the discrete color palette used for a plot, making sure to use the length of the discrete values, as the colors used change with the length of the palette. <code><a href="https://scales.r-lib.org/reference/pal_hue.html">scales::hue_pal()</a></code> prints out the color hex values, while <code><a href="https://scales.r-lib.org/reference/show_col.html">scales::show_col()</a></code> creates a plot of the colors.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/pal_hue.html">hue_pal</a></span><span class="op">(</span><span class="op">)</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/pal_hue.html">hue_pal</a></span><span class="op">(</span><span class="op">)</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">## [1] "#F8766D" "#00BA38" "#619CFF"</span></span>
 <span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html">show_col</a></span><span class="op">(</span><span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/pal_hue.html">hue_pal</a></span><span class="op">(</span><span class="op">)</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -716,22 +760,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_grey.html">scale_color_grey</a></span><span class="op">(</span>start <span class="op">=</span> <span class="fl">0</span>, end <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>An alternative is to choose colors manually, either using <a href="https://r-charts.com/colors/">named R colors</a> or hex values. The <a href="https://allisonhorst.github.io/palmerpenguins/index.html">documentation site for palmerpenguins</a> uses scale_color_manual()`</p>
+<p>An alternative is to choose colors manually, either using <a href="https://r-charts.com/colors/">named R colors</a> or hex values. The <a href="https://allisonhorst.github.io/palmerpenguins/index.html">documentation site for palmerpenguins</a> uses <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual()</a></code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"darkorange"</span>, <span class="st">"purple"</span>, <span class="st">"cyan4"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -761,13 +805,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://emilhvitfeldt.github.io/paletteer/">paletteer</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://emilhvitfeldt.github.io/paletteer/">paletteer</a></span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://emilhvitfeldt.github.io/paletteer/reference/ggplot2-scales-discrete.html">scale_color_paletteer_d</a></span><span class="op">(</span><span class="st">"nationalparkcolors::BlueRidgePkwy"</span>,</span>
 <span>                          direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -777,26 +821,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>There are many ways you can annotate a plot. A first step is often to label your points or a subset of the points in the plot. <code><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_label()</a></code> provide this functionality, but the <a href="https://ggrepel.slowkow.com">ggrepel package</a> uses an algorithmic approach to minimize overlaping the labels with the points. The <a href="https://ggrepel.slowkow.com/articles/examples">Examples vignette</a> does a good job of showing the wide range of features available in ggrepel.</p>
 <p>Let’s first create a subset of the <code>penguins</code> data, here taking a random sample.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1239</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1239</span><span class="op">)</span></span>
 <span><span class="va">penguins_sub</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">body_mass_g</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguins_sub</span>,</span>
 <span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">island</span><span class="op">)</span>,</span>
 <span>                  min.segment.length <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="co"># Forces drawing line labels</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguins_sub</span>,</span>
 <span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">island</span><span class="op">)</span>,</span>
@@ -804,14 +848,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>                  box.padding <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="co"># Move text further from points</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Another good technique is to color the points you want to highlight and add an second larger set of points.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
 <span>             y <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -822,14 +866,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>                  color <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>You can also do custom annotations with the <code><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate()</a></code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Find x and y of heaviest penguin</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Find x and y of heaviest penguin</span></span>
 <span><span class="va">biggest</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">body_mass_g</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">biggest</span><span class="op">$</span><span class="va">flipper_length_mm</span>, <span class="va">biggest</span><span class="op">$</span><span class="va">body_mass_g</span><span class="op">)</span></span>
@@ -853,7 +897,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -862,7 +906,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">4.8</span> Fancy text with marquee</h2>
 <p><a href="https://marquee.r-lib.org/index.html">marquee</a> lets you add stylized text to your plots using Markdown.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://marquee.r-lib.org">marquee</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://marquee.r-lib.org">marquee</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">hex</span> <span class="op">&lt;-</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/pal_hue.html">hue_pal</a></span><span class="op">(</span><span class="op">)</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">md_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://marquee.r-lib.org/reference/marquee_glue.html">marquee_glue</a></span><span class="op">(</span></span>
@@ -891,7 +935,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -908,21 +952,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Isabella Benabaye - ggplot2 Theme Elements Reference Sheet</figcaption></figure>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"darkorange"</span>,<span class="st">"purple"</span>,<span class="st">"cyan4"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://emilhvitfeldt.github.io/paletteer/reference/ggplot2-scales-discrete.html">scale_color_paletteer_d</a></span><span class="op">(</span><span class="st">"nationalparkcolors::BlueRidgePkwy"</span>,</span>
+<span>                          direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>n.breaks <span class="op">=</span> <span class="fl">4</span>,</span>
 <span>                     labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"mm"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span></span>
 <span>                     scale <span class="op">=</span> <span class="fl">0.001</span>,</span>
 <span>                     suffix <span class="op">=</span> <span class="st">"kg"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://emilhvitfeldt.github.io/paletteer/reference/ggplot2-scales-discrete.html">scale_color_paletteer_d</a></span><span class="op">(</span><span class="st">"nationalparkcolors::BlueRidgePkwy"</span>,</span>
-<span>                          direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Flipper length"</span>,</span>
 <span>       y <span class="op">=</span> <span class="st">"Body mass"</span>,</span>
 <span>       color <span class="op">=</span> <span class="st">"Penguin species"</span>,</span>
-<span>       shape <span class="op">=</span> <span class="st">"Penguin species"</span><span class="op">)</span></span>
-<span><span class="co">## Scale for colour is already present.</span></span>
-<span><span class="co">## Adding another scale for colour, which will replace the existing scale.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>       shape <span class="op">=</span> <span class="st">"Penguin species"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="legend-position" class="level3" data-number="4.9.1"><h3 data-number="4.9.1" class="anchored" data-anchor-id="legend-position">
 <span class="header-section-number">4.9.1</span> Legend position</h3>
@@ -934,34 +975,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>theme(legend.position = "none")</code></li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>With theme you can move the legend.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, <span class="co"># change position of legend</span></span>
 <span>        legend.direction <span class="op">=</span> <span class="st">"horizontal"</span><span class="op">)</span> <span class="co"># and legend direction</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Or move it inside the plot.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.7</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -970,11 +1011,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">4.9.2</span> Base themes</h3>
 <p>Use the base themes to get a start.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -982,49 +1023,142 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here you might adjust general aspects of the theme like the font and text size.</p>
 </section><section id="system-fonts" class="level3" data-number="4.9.3"><h3 data-number="4.9.3" class="anchored" data-anchor-id="system-fonts">
 <span class="header-section-number">4.9.3</span> System fonts</h3>
-<p>The packages <a href="https://systemfonts.r-lib.org">systemfonts</a> and ragg from Posit work together to give RStudio access to the fonts on your system and use them within plots. This works seemlessly for the most part once you install the packages and tell RStudio to use AGG as its graphic device. This is done in Settings -&gt; General -&gt; Graphics -&gt; Backend. To use ragg in knitr and quarto set <code>knitr::opts_chunk$set(dev = "ragg_png")</code>.</p>
+<p>The packages <a href="https://systemfonts.r-lib.org">systemfonts</a> and ragg from Posit work together to give RStudio access to the fonts on your system and use them within plots. This works seamlessly for the most part once you install the packages and tell RStudio to use <strong>AGG</strong> as its graphic device. This is done in <code>Settings -&gt; General -&gt; Graphics -&gt; Backend</code>. To use ragg in knitr and quarto set <code>knitr::opts_chunk$set(dev = "ragg_png")</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Look at available fonts</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Look at available fonts</span></span>
 <span><span class="fu">systemfonts</span><span class="fu">::</span><span class="fu"><a href="https://systemfonts.r-lib.org/reference/system_fonts.html">system_fonts</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>header_family <span class="op">=</span> <span class="st">"EB Garamond"</span>,</span>
 <span>                base_family <span class="op">=</span> <span class="st">"Futura"</span>,</span>
 <span>                base_size <span class="op">=</span> <span class="fl">13</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emilhvitfeldt.github.io/paletteer/reference/paletteer_d.html">paletteer_d</a></span><span class="op">(</span><span class="st">"nationalparkcolors::BlueRidgePkwy"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emilhvitfeldt.github.io/paletteer/reference/paletteer_d.html">paletteer_d</a></span><span class="op">(</span><span class="st">"nationalparkcolors::BlueRidgePkwy"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">md_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://marquee.r-lib.org/reference/marquee_glue.html">marquee_glue</a></span><span class="op">(</span></span>
 <span>  <span class="st">"## Penguin size, Palmer Station LTER</span></span>
 <span><span class="st">  Flipper length (*mm*) compared to body mass (*kg*) of **{.{hex[1]} Adelie}**, **{.{hex[2]} Chinstrap}** and **{.{hex[3]} Gentoo}** Penguins collected from 2007 to 2009 on the islands of Biscoe, Dream, and Torgersen.</span></span>
 <span><span class="st">  "</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">p</span> <span class="op">+</span> </span>
+<span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>header_family <span class="op">=</span> <span class="st">"EB Garamond"</span>,</span>
 <span>                base_family <span class="op">=</span> <span class="st">"Futura"</span>,</span>
 <span>                base_size <span class="op">=</span> <span class="fl">13</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">md_text</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://marquee.r-lib.org/reference/element_marquee.html">element_marquee</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, width <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>                                      margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>b <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>        legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>        legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="2400"></p>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
+</section></section><section id="saving-the-plot" class="level2" data-number="4.10"><h2 data-number="4.10" class="anchored" data-anchor-id="saving-the-plot">
+<span class="header-section-number">4.10</span> Saving the plot</h2>
+<p>The most straightforward way to save the plots you make is with <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>. It is quite simple to save the plot. The difficult part comes with creating figures that are reproducible and are the right size and shape. The key to reproducibility is giving plots a set size and aspect ration, but choosing the right one can be an iterative process. The larger size image you make, the smaller the elements of your plot will be. Therefore, you may need to do some back and forth with the size of plot elements and the size of the plot.</p>
+<p>A nice way to maintain consistent looking plots in <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> is to set <code>width</code> and then set <code>height</code> as a ratio of <code>width</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"fig_output/penguin-scatterplot.png"</span>,</span>
+<span>       plot <span class="op">=</span> <span class="va">p3</span>,</span>
+<span>       width <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>       height <span class="op">=</span> <span class="fl">0.67</span> <span class="op">*</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="png-vs-pdf" class="level3" data-number="4.10.1"><h3 data-number="4.10.1" class="anchored" data-anchor-id="png-vs-pdf">
+<span class="header-section-number">4.10.1</span> PNG vs PDF</h3>
+<p>People have been working hard to make it easier to work with fonts in visualization in R, but there are still important differences. Using the AGG device for PNG files makes it possible to create raster graphics. See this <a href="https://tidyverse.org/blog/2025/05/fonts-in-r/">blog post on Fonts in R</a> for more information.</p>
+<p>To produce PDF graphics that use custom fonts you may need to use <code>device = cairo_pdf</code> in <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>. See <a href="https://www.andrewheiss.com/blog/2017/09/27/working-with-r-cairo-graphics-custom-fonts-and-ggplot/">this post from Andrew Heiss</a> about Cario graphics for PDFs.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"fig_output/penguin-scatterplot.pdf"</span>,</span>
+<span>       plot <span class="op">=</span> <span class="va">p3</span>,</span>
+<span>       width <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>       height <span class="op">=</span> <span class="fl">0.67</span> <span class="op">*</span> <span class="fl">6</span>,</span>
+<span>       device <span class="op">=</span> <span class="va">cairo_pdf</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section></section><section id="putting-plots-together-with-patchwork" class="level2" data-number="4.11"><h2 data-number="4.11" class="anchored" data-anchor-id="putting-plots-together-with-patchwork">
+<span class="header-section-number">4.11</span> Putting plots together with patchwork</h2>
+<p><a href="https://patchwork.data-imaginist.com/index.html">patchwork</a> provides a robust way to combine separate ggplots into the same graphic.</p>
+<p>First, let’s style the barplots we made earlier to match the scatterplot. <code><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">set_theme()</a></code> resets the current theme. Alternatively you can provide a name, such as <code>my_theme</code> to theme elements and use it in a plot with the <code>+</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">set_theme</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>header_family <span class="op">=</span> <span class="st">"EB Garamond"</span>,</span>
+<span>                base_family <span class="op">=</span> <span class="st">"Futura"</span>,</span>
+<span>                base_size <span class="op">=</span> <span class="fl">13</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">p1</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span></span>
+<span>                     scale <span class="op">=</span> <span class="fl">0.001</span>,</span>
+<span>                     suffix <span class="op">=</span> <span class="st">"kg"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://emilhvitfeldt.github.io/paletteer/reference/ggplot2-scales-discrete.html">scale_fill_paletteer_d</a></span><span class="op">(</span><span class="st">"nationalparkcolors::BlueRidgePkwy"</span>,</span>
+<span>                          direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Island"</span>, y <span class="op">=</span> <span class="st">"Body mass"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
+<span><span class="co">## Scale for y is already present.</span></span>
+<span><span class="co">## Adding another scale for y, which will replace the existing scale.</span></span>
+<span></span>
+<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">p2</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://emilhvitfeldt.github.io/paletteer/reference/ggplot2-scales-discrete.html">scale_fill_paletteer_d</a></span><span class="op">(</span><span class="st">"nationalparkcolors::BlueRidgePkwy"</span>,</span>
+<span>                          direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Island"</span>, y <span class="op">=</span> <span class="st">"Flipper length (*mm*)"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.y <span class="op">=</span> <span class="fu"><a href="https://marquee.r-lib.org/reference/element_marquee.html">element_marquee</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="composing-plots" class="level3" data-number="4.11.1"><h3 data-number="4.11.1" class="anchored" data-anchor-id="composing-plots">
+<span class="header-section-number">4.11.1</span> Composing plots</h3>
+<ul>
+<li>
+<code>+</code>: Add plots in row order</li>
+<li>
+<code>|</code>: Place plots beside each other</li>
+<li>
+<code>-</code>: Used to keep each side from each other when building complex plots</li>
+<li>
+<code>/</code>: Place plots on top of each other</li>
+<li>
+<code>&amp;</code>: Apply elements to all subplots in the composition</li>
+<li>
+<code>*</code>: Apply elements to all subplots in the current nesting level
+<ul>
+<li>Using <code>+</code> to add elements of a plot will affect the last plot</li>
+</ul>
+</li>
+<li>
+<code>()</code>: Use parentheses to group plots</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p3</span> <span class="op">/</span> <span class="op">(</span><span class="va">p1</span> <span class="op">|</span> <span class="va">p2</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html">plot_layout</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="content_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s save the final plot.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"patchwork-plot.png"</span>,</span>
+<span>        width <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>        height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section></section><section id="conclusion" class="level2" data-number="4.12"><h2 data-number="4.12" class="anchored" data-anchor-id="conclusion">
+<span class="header-section-number">4.12</span> Conclusion</h2>
+<p>There are many more things that you can do with ggplot2. This workshop is meant to provide a starting point. Check out the <a href="./resources.html">Resources for ggplot2 page</a> for starting points on what you can do with ggplot2.</p>
 
 
-</section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
 <li id="fn1"><p>A version of this data is now built into R as of R 4.5 (released on 11 April 2025). There are some minor differences such as the names of columns, but we will use the data from the package.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
