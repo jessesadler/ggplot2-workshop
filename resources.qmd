@@ -1,0 +1,32 @@
+---
+title: "Resources for ggplot2"
+format: html
+---
+
+## ggplot2 reference guides
+Here are a couple of quick reference guides for working with ggplot2.
+
+- The documentation for [ggplot2](https://ggplot2.tidyverse.org) is really good and should be one of the first places you look for help.
+    - The [Introduction to ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html) is particularly valuable for going over the grammar of graphics.
+- There is also a [Data visualization with ggplot2 – Cheat Sheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html) that provides a nice overview of commonly used aspects of ggplot2. You can view it as either a web page or a PDF.
+- The [ggplot2 Theme Elements Reference Sheet](https://isabella-b.com/blog/ggplot2-theme-elements-reference/) by Isabella Benabaye is a wonderful for when you want to remember how to change a theme element.
+
+## More in depth resources on ggplot2 and visualization
+For more in depth discussions for how to use ggplot2 and data visualization in general, start with these resources:
+
+- Hadley Wickham et al., *R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*, Second edition (O’Reilly, 2023), <https://r4ds.hadley.nz>.
+    - [Chapter 1. Data visualization](https://r4ds.hadley.nz/data-visualize.html): Goes through a similar scatterplot as the [Getting started with visualization worksheet](../worksheets/03-worksheet.qmd) but also contains information about other kinds of plots such as bar plots.
+    - [Chapter 9. Layers](https://r4ds.hadley.nz/layers.html): Provides a more in depth discussion of the grammar of graphics.
+    - [Chapter 10. Exploratory data analysis](https://r4ds.hadley.nz/EDA.html): This chapter is less about the mechanics of visualization with ggplot2 and more about why data visualization is important to understanding data.
+    - [Chapter 11. Communication](https://r4ds.hadley.nz/communication.html): This chapter focuses on how you can polish plots to make them better communicate the point you want to make with them.
+- Kieran Healy, [*Data Visualization: A Practical Introduction*](https://socviz.co) (Princeton University Press, 2018).
+- Claus Wilke, [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/) (O'Reilly, 2019).
+- Andreas, Krause, Rennie Nicola, and Tarran Brian. "Best Practices for Data Visualisation". Version v1.0.1. February 1, 2024. <https://doi.org/10.5281/ZENODO.10600718>.
+    - [The Data visualization guide itself](https://royal-statistical-society.github.io/datavisguide/).
+- The most in depth option is the Second or Third edition of *ggplot2: Elegant Graphics for Data Analysis*. The second edition from 2016 is available through the Library. The unpublished third edition is available online at <https://ggplot2-book.org>.
+
+## For inspiration
+If you want some inspiration for using ggplot2 to make some truly unique visualizations, check out the data visualization work of [Nicola Rennie](https://nrennie.rbind.io).
+
+- She has recently finished a book that goe through 12 different plots she has made, showing how and why she made them: Nicola Rennie, *The Art of Data Visualization with Ggplot2: The TidyTuesday Cookbook* (CRC Press, 2025), <https://nrennie.rbind.io/art-of-viz/>.
+- You can also look over the different [data challenges](https://nrennie.rbind.io/projects/data-visualisation/data-viz-challenges/) she has participated in.
