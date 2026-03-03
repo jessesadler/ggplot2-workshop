@@ -1,0 +1,262 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data visualization with ggplot2",
+    "section": "",
+    "text": "Welcome\nThis hands-on, participatory workshop is designed for those with basic R programming experience that are looking to take their data visualization skills to the next level. Join us to learn about making high-quality, reproducible data visualizations with R and ggplot2. Attendees will practice making different kinds of plots, modifying color scales, and styling plots to make publication-ready visualizations.\nThe workshop is open to anyone, but learners should be familiar with programming in R and ggplot2 equivalent to the Intro to R and RStudio and Data wrangling and visualization with R workshops or one of the Carpentries lessons on R.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Data visualization with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Data visualization with ggplot2",
+    "section": "",
+    "text": "Learning outcomes\n\nBe able to make various types of plots with ggplot2, including barplots, histograms, boxplots, and scatterplots.\nLearn to modify standard scales in ggplot2 and use various color palettes.\nGain familiarity with different ways to highlight and annotate data within plots.\nUse ggplot2’s theming system to style plots in preparation for publication.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Data visualization with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#setup",
+    "href": "index.html#setup",
+    "title": "Data visualization with ggplot2",
+    "section": "Setup",
+    "text": "Setup\nPlease download R and RStudio before the workshop. If you already have R and RStudio installed, check for updates in RStudio and make sure you have a recent version of R. The current version of R as of 3 March 2026 is 4.5.2. Please make sure that you have at least version 4.3 or greater.\n\nDownload R\nDownload RStudio",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Data visualization with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#install-packages-for-the-workshop",
+    "href": "index.html#install-packages-for-the-workshop",
+    "title": "Data visualization with ggplot2",
+    "section": "Install packages for the workshop",
+    "text": "Install packages for the workshop\nThere are a large number of packages that extend the capabilities of ggplot2. We will use some of the more widely used ones in this workshop and the materials will point to other options. You can install the packages in the console in RStudio or using the Packages tab in the bottom-right pane in RStudio.\n\ninstall.packages(c(\"tidyverse\", \"palmerpenguins\", \"ggrepel\", \"paletteer\",\n                   \"systemfonts\", \"marquee\", \"patchwork\"))\n\n\ntidyverse\n\npalmerpenguins: Data for the workshop.\n\nggrepel: To help annotate plots.\n\npaletteer: Large collection of color palettes.\n\nsystemfonts: Enable R to find installed fonts.\n\nmarquee: Enable text formatting in ggplot2 using Markdown.\n\npatchwork: Combine multiple plots into a single graphic.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Data visualization with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio-guide.html",
+    "href": "rstudio-guide.html",
+    "title": "2  Using R in RStudio",
+    "section": "",
+    "text": "2.1 Opening RStudio\nThis page provides some resources, tips, and useful keyboard shortcuts that will make it easier to write and run R code in RStudio. There are always multiple ways to do something in RStudio, and you will develop your own usage patterns as you work more in RStudio. Let’s start with some key resources.\nLet’s start by making sure we can open RStudio. You can open the application as you would any other application. However, I recommend starting RStudio by double-clicking on the project file (.Rproj) for a project. You can open multiple instances of RStudio at once, working on a variety of projects. If you want to switch from one project to another, the easiest way is through Project drop down on the top right of the RStudio window.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Using R in RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio-guide.html#how-to-find-and-run-commands",
+    "href": "rstudio-guide.html#how-to-find-and-run-commands",
+    "title": "2  Using R in RStudio",
+    "section": "2.2 How to find and run commands",
+    "text": "2.2 How to find and run commands\n\nKeyboard Shortcut Reference: Help -&gt; Keyboard Shortcuts Help, Alt + Shift + K, or Option + Shift + K\nCommand palette: Ctrl + Shift + P or Cmd + Shift + P\n\nProvides a text searchable interface to run all of RStudio’s commands.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Using R in RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio-guide.html#coding-foundations",
+    "href": "rstudio-guide.html#coding-foundations",
+    "title": "2  Using R in RStudio",
+    "section": "2.3 Coding foundations",
+    "text": "2.3 Coding foundations\n\n\n\n\n\n\n\n\nCommand\nWindows\nmacOS\n\n\n\n\nRun R expression while in the console\nEnter\nReturn\n\n\nRun R current expression from the editor pane\nCtrl + Enter\nCmd + Return\n\n\nTab completion for functions and objects\nTab + Tab\nTab + Tab\n\n\nAssignment operator (&lt;-)\nAlt + -\nOption + -\n\n\nInsert pipe operator |&gt; or %&gt;%\nCtrl + Shift + M\nCmd + Shift + M\n\n\nCreate a section in an R script\nCtrl + Shift + R\nCmd + Shift + R\n\n\nComment out code by placing # at beginning of line\nCtrl + Shift + C\nCmd + Shift + C\n\n\n\n\n2.3.1 Be aware of the state of your console\nThere will be times where you accidentally run a partial R expression. Maybe you forgot a closing quotation mark or parentheses. Or you forgot a pipe or plus sign in building a ggplot. You will see the consequences of this in the console. Instead of the prompt (&gt;) telling you R is ready for the next expression, it will have a plus sign (+) telling you R does not think you are done with the previous expression. You can get out of this by finishing the code, pressing ESC or Ctrl + C.\n\nPrompt &gt;: R is ready for the next expression.\nContinuation +: R does not think you are done with previous expression.\n\nExit continuation by pressing ESC or Ctrl + C.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Using R in RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio-guide.html#viewing-data-and-documentation",
+    "href": "rstudio-guide.html#viewing-data-and-documentation",
+    "title": "2  Using R in RStudio",
+    "section": "2.4 Viewing data and documentation",
+    "text": "2.4 Viewing data and documentation\nWhen you are writing code and doing exploratory data analysis, you will find yourself needing to look at your data or investigate different functions and how they work. Even if you work with a specific data frame for a long time or have used a function hundreds of times, you may need to remind yourself of a column or argument name. You can do both of these activities in RStudio through the GUI or by running code. If you do it by running code, this is a good example of the different uses of the console compared to a script. Because you are looking for information right now rather than noting that you will always want this information, you should be running this code in the console.\nRStudio has a powerful Data viewer in which you can view data frames in a spreadsheet-like manner. You can view a data frame in the viewer by either:\n\nClick on the data frame in the Environment pane.\nRun View(data_name) in the console.\n\n\n\n\n\n\n\nFigure 2.1: Quickly view data frames in a spreadsheet-like environment by running View(data_name) or clicking on a data frame object in the environment pane on the right.\n\n\n\nYou can read the documentation for a function in the Help tab. RStudio even provides a link to run the examples found at the bottom of the help page. To get to the documentation for a function you can either:\n\nGo to the Help tab in the File pane on the bottom right and search for the function.\nRun ?function_name in the console.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Using R in RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio-guide.html#a-reproducible-workflow",
+    "href": "rstudio-guide.html#a-reproducible-workflow",
+    "title": "2  Using R in RStudio",
+    "section": "2.5 A reproducible workflow",
+    "text": "2.5 A reproducible workflow\nWe need to make some important changes to the default settings in RStudio to ensure that R scripts remain the source of truth of your analysis not your environment. Go to Tools -&gt; Global Options and uncheck Restore .RData into workspace at startup and set Save workspace to .RData on exit to Never.\n\n\n\n\n\n\nFigure 2.2: RStudio Global Options: Set these options for the Workspace.\n\n\n\nThese settings make sure that your enviornment is cleared everytime you exit RStudio. This might seem like it is painful, but it is short-term pain for long-term gain. It will teach you to keep what you want to save in your R script so that you can always recreate objects or rerun analysis later. The true source for the analysis is your script; enviornmental objects can be recreated through the script. It is valuable to check this every once in a while by restarting R. You can then rerun your entire script to make sure that you have fully captured your analysis in the script.\n\nRestart R\n\nUse the command palette: Restart R Session\nSession -&gt; Restart R\nWindows: Ctrl + Shift + F10\nmacOS: Cmd + Shift + 0\n\nRerun script\n\nRun all expressions at once: Ctrl + Shift + S or Cmd + Shift + S\nRun each expression at a time: Ctrl + Enter or Cmd + Return\n\n\nEven though the latter may seem tedious, there are benefits to it. Because Ctrl + Enter or Cmd + Return not only runs the current expression, it also moves the cursor to the next expression, you can hold down Ctrl or Cmd` and hit return quite quickly. This way can also make it easier to identify where a problem occurs, at least as long as you keep looking for errors in the console.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Using R in RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "grammar-of-graphics.html",
+    "href": "grammar-of-graphics.html",
+    "title": "\n3  ggplot2 and the Grammar of Graphics\n",
+    "section": "",
+    "text": "ggplot2 is built on a grammar of graphics that abstracts data visualizations into separate components.1\nCentral to how ggplot2 implements the grammar of graphics is the notion of layers, which is used in two different but overlapping ways.\nWe can translate the grammar of graphics into generalized ggplot2 code as follows:\nNote that you do not need to specify all of these elements for your plots. ggplot2 will choose reasonable defaults for those elements you do not specify.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ggplot2 and the Grammar of Graphics</span>"
+    ]
+  },
+  {
+    "objectID": "grammar-of-graphics.html#footnotes",
+    "href": "grammar-of-graphics.html#footnotes",
+    "title": "\n3  ggplot2 and the Grammar of Graphics\n",
+    "section": "",
+    "text": "Leland Wilkinson, The Grammar of Graphics, Second Edition (Springer-Verlag, 2005), https://doi.org/10.1007/0-387-28695-0; Hadley Wickham, “A Layered Grammar of Graphics,” Journal of Computational and Graphical Statistics 19, no. 1 (2010): 3–28, https://doi.org/10.1198/jcgs.2009.07098; Hadley Wickham, ggplot2: Elegant Graphics for Data Analysis, Second Edition (Springer, 2016), https://doi.org/10.1007/978-3-319-24277-4, page 4.↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ggplot2 and the Grammar of Graphics</span>"
+    ]
+  },
+  {
+    "objectID": "content.html",
+    "href": "content.html",
+    "title": "\n4  Workshop content\n",
+    "section": "",
+    "text": "4.1 Get to know the data\nFor this workshop we will be using is from the palmerpenguins package. The data were collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER, a member of the Long Term Ecological Research Network. See the package website for more details.1\n# Load the tidyverse and palmerpenguins package.\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n# Load the data\ndata(penguins)\npenguins\n## # A tibble: 344 × 8\n##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n##  1 Adelie  Torgersen           39.1          18.7               181        3750\n##  2 Adelie  Torgersen           39.5          17.4               186        3800\n##  3 Adelie  Torgersen           40.3          18                 195        3250\n##  4 Adelie  Torgersen           NA            NA                  NA          NA\n##  5 Adelie  Torgersen           36.7          19.3               193        3450\n##  6 Adelie  Torgersen           39.3          20.6               190        3650\n##  7 Adelie  Torgersen           38.9          17.8               181        3625\n##  8 Adelie  Torgersen           39.2          19.6               195        4675\n##  9 Adelie  Torgersen           34.1          18.1               193        3475\n## 10 Adelie  Torgersen           42            20.2               190        4250\n## # ℹ 334 more rows\n## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\npenguins is a simplified version of penguins_raw.\nglimpse(penguins)\n## Rows: 344\n## Columns: 8\n## $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n## $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n## $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n## $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n## $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n## $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n## $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n## $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…\npenguins has 8 columns:\nsummary(penguins)\nNote the existence of missing data in all but species and island columns. summary() gives a good overview of the data and the counts for the species, island, and sex.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "content.html#get-to-know-the-data",
+    "href": "content.html#get-to-know-the-data",
+    "title": "\n4  Workshop content\n",
+    "section": "",
+    "text": "Artwork by @allison_horst\n\n\n\n\n\n\n\n\nspecies: Three penguin species.\n\nisland: Islands in Palmer Archipelago, Antarctica (Biscoe, Dream or Torgersen).\n\nbill_length_mm: Numeric value in mm.\n\nbill_depth_mm: Numeric value in mm.\n\nflipper_length_mm: Numeric value in mm.\n\nbody_mass_g: Integer of mass in grams.\n\nsex: female and male\n\nyear: Integeer from 2007 to 2009.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "content.html#warming-up-exploratory-plots",
+    "href": "content.html#warming-up-exploratory-plots",
+    "title": "\n4  Workshop content\n",
+    "section": "\n4.2 Warming up: Exploratory plots",
+    "text": "4.2 Warming up: Exploratory plots\n\n4.2.1 Distribution of a categorica variable\n\nggplot(penguins, aes(x = species)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n4.2.2 Distribution of a numeric variable\nLet’s look at the distribution of a numeric variable and add in the species.\n\nggplot(data = penguins,\n       mapping = aes(x = body_mass_g, fill = species)) + \n       geom_histogram(alpha = 0.8)\n## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n## Warning: Removed 2 rows containing non-finite outside the scale range\n## (`stat_bin()`).\n\n\n\n\n\n\n\nHow does changing the binwidth affect the plot.\nTry with a different numeric variable.\nNow let’s try with geom_density():\n\nggplot(data = penguins,\n       mapping = aes(x = flipper_length_mm, fill = species)) + \n       geom_density(alpha = 0.8)\n## Warning: Removed 2 rows containing non-finite outside the scale range\n## (`stat_density()`).\n\n\n\n\n\n\n\n\n4.2.3 Visualizing relationship of two numeric variables\n\nggplot(data = penguins,\n        mapping = aes(x = flipper_length_mm, y = body_mass_g)) + \n    geom_point(aes(color = species, shape = species))\n## Warning: Removed 2 rows containing missing values or values outside the scale range\n## (`geom_point()`).\n\n\n\n\n\n\n\nTry with different numeric variables.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "content.html#geoms-stats-and-positions",
+    "href": "content.html#geoms-stats-and-positions",
+    "title": "\n4  Workshop content\n",
+    "section": "\n4.3 Geoms, stats, and positions",
+    "text": "4.3 Geoms, stats, and positions\nYou might notice that while the basic structure of creating these plots is similar, there are subtle differences. We provided a variable from the data for y axis of the scatterplot (y = body_mass_g) but not for the barplot, histogram, or density plot. If you look at the y-axis of these plots, you will notice that they have names not found in the penguins data. They all work by performing a statistical transformation to calculate the y -axis. The geoms used above default to the following stats.\n\n\nGeom\nStat\nStat function\n\n\n\ngeom_bar()\n\"count\"\nstat_count()\n\n\ngeom_histogram()\n\"bin\"\nstat_bin()\n\n\ngeom_density()\n\"density\"\nstat_density()\n\n\ngeom_point()\n\"identity\"\nstat_identity()\n\n\ngeom_boxplot()\n\"boxplot\"\nstat_boxplot()\n\n\n\nYou can create a plot with either a geom, changing the default stat if you want or with a stat function (stat_*()) and choosing the geom to represent the stat. For instance, use stat_count() to recreate the first barplot.\n\n ggplot(penguins, \n        aes(x = island)) + \n  stat_count(geom = \"bar\")\n\n\n\n\n\n\n\nThis may not seem that interesting at first, but intermxing geoms and stats creates opportunities for plots that represent more complex forms of analysis, for instance a bar plot of the average body weight of the penguins by island. This can be written using either geom_bar() or stat_summary().\n# geom with stat\npenguins |&gt; \n  ggplot(aes(x = island, y = body_mass_g)) +\n  geom_bar(stat = \"summary\", fun = \"mean\")\n## Warning: Removed 2 rows containing non-finite outside the scale range\n## (`stat_summary()`).\n\n# stat with geom\npenguins |&gt; \n  ggplot(aes(x = island, y = body_mass_g)) +\n  stat_summary(geom = \"bar\", fun = \"mean\")\n## Warning: Removed 2 rows containing non-finite outside the scale range\n## (`stat_summary()`).\n\n\n\n\n\n\n\n\n\n\nYou might want to provide additional information such as error bars indicating the standard deviation of the mean. We need to add another geom layer and use stat_summary() with geom errorbar. Let’s also remove the rows with missing data for body_mass_g.\n\npenguins |&gt; \n  filter(!is.na(body_mass_g)) |&gt; \n  ggplot(aes(x = island, y = body_mass_g)) +\n  geom_bar(stat = \"summary\", fun = \"mean\", fill = \"lightblue\") + \n  stat_summary(geom = \"errorbar\",\n               fun.data = mean_se,\n               width = 0.2) # Width of the error bars is 20% of the bars\n\n\n\n\n\n\n\n\n4.3.1 Position\nFinding the average mass of penguins by island is not very meaningful because there are multiple species per island. It is possible group the penguins by species for each island using the fill aesthetic, which brings us to the question of how the separate bars are positioned.\nEach geom has a position argument that takes either \"identity\", \"stack\", \"dodge\", \"dodge2\", or \"fill\", or, alternatively, the corresponding position_*() functions that allow more freedom in tweaking aspects of the position.\nThe default position for geom_bar() is position_stack(). In this instance, placing the groups alongside each other with \"dodge\" will make it possible to keep the error bars. \"dodge2\" provides space between the bars of the groups. Note that using the position_*() function makes it possible to better control the behavior such as maintaining the same width for all bars than using the character equivalent.\n\npenguins |&gt; \n  filter(!is.na(body_mass_g)) |&gt; \n  ggplot(aes(x = island, y = body_mass_g, fill = species)) +\n  geom_bar(stat = \"summary\", fun = \"mean\", position = \"dodge\") + \n  stat_summary(geom = \"errorbar\",\n               fun.data = mean_se,\n               width = 0.2) # Width of the error bars is 20% of the bars\n\n\n\n\n\n\n\nThis works, but we also need to adjust the position of the errorbars. We can also use position_dodge2(preserve = \"single\") to make the total width of the Torgersen bar be the same as the others. To get the errorbars to have the same widths across all of the bars it is necessary to set a matching width for the geoms and then using padding to set the width of the error bars.\n\npenguins |&gt; \n  filter(!is.na(body_mass_g)) |&gt; \n  ggplot(aes(x = island, y = body_mass_g, fill = species)) +\n  geom_bar(stat = \"summary\", fun = \"mean\", width = 1,\n           position = position_dodge2(preserve = \"single\")) + \n  stat_summary(geom = \"errorbar\",\n               fun.data = mean_se,\n               width = 1,\n               position = position_dodge2(preserve = \"single\",\n                                          padding = 0.6))\n\n\n\n\n\n\n\nlet’s save this plot as p to build on in the next section.\n\np &lt;- last_plot()\n\nAvailable positions include:\n\n\nposition_identity(): Do not adjust position\n\nposition_dodge(): Dodge overlapping objects side-to-side; useful with geom_bar().\n\nposition_dodge2(): Dodge overlapping objects side-to-side with a gap; used with geom_boxplot().\n\nposition_jitter(): Add random width and height adjustments to data; default for geom_jitter().\n\nposition_jitterdodge(): Dodge and jitter; primarily useful for jittering points within dodged box plots.\n\nposition_nudge(): Add manual adjustments to x or y; built into geom_text() to move labels away from points.\n\nposition_stack(): Stacks bars on top of each other; default in geom_bar() to stack groups within a discrete variable.\n\nposition_fill(): Stacks bars and standardizes each stack to have constant height to show ratios.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "content.html#axes-scales-and-zooming",
+    "href": "content.html#axes-scales-and-zooming",
+    "title": "\n4  Workshop content\n",
+    "section": "\n4.4 Axes scales and zooming",
+    "text": "4.4 Axes scales and zooming\nBy default ggplot2 expands the scale of axes by 5% on each side for continuous variables and by 0.6 units on each side for discrete variables. This gives plots a bit of padding, but you may not always want this. Padding can be removed by setting scale_x/y_*(expand = expansion(0) or coord_cartesian(expand = FALSE). When removing padding completely, it may be beneficial to turn clip = \"off\" to allow points plotted outside the panel region so they are not cut in half.\n\np + \n  coord_cartesian(expand = FALSE, clip = \"off\")\n\n\n\n\n\n\n\nBut you may want to give a bit of padding to one side of the axis scale. For instance, the upper limit of y. This can be done with expand = expansion(mult = c(0, 0.05)).\n\np + \n  scale_x_discrete(expand = expansion(0)) + \n  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))\n\n\n\n\n\n\n\n\n4.4.1 Zooming vs filtering\nThere may be instances where you would like to zoom in on a plot. Our current barplot begins at 0, but no penguin is going to weigh 0 grams. The lightest penguin in the data set is:\n\nmin(penguins$body_mass_g, na.rm = TRUE)\n## [1] 2700\n\nSo what would happen if we set the minimum for the y scale to 2500 and used NA to maintain the same maximum?\n\np + \n  scale_x_discrete(expand = expansion(0)) + \n  scale_y_continuous(limits = c(2500, NA),\n                     expand = expansion(mult = c(0, 0.05)))\n## Warning: Removed 5 rows containing missing values or values outside the scale range\n## (`geom_bar()`).\n\n\n\n\n\n\n\nThe result is clearly somethig we did not intend. This is because setting limits with scale_x/y_*() subsets data; all values outside the range become NA. This will lead to changes in the data for lines or polygons. To zoom in on the data you need to use coord_cartesian() with the xlim or ylim argument.\n\np + \n  scale_x_discrete(expand = expansion(0)) + \n  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) + \n  coord_cartesian(ylim = c(2500, NA))",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "content.html#axes-scales-and-guides",
+    "href": "content.html#axes-scales-and-guides",
+    "title": "\n4  Workshop content\n",
+    "section": "\n4.5 Axes scales and guides",
+    "text": "4.5 Axes scales and guides\nScales are the basis for guides that used to interpret the plot: axes and legends. Let’s create a scatterplot comparing the flipper length to the body mass of the penguins by species to provide a basis for looking more in depth at the guides of a plot.\n\np &lt;- penguins |&gt; \n  ggplot(aes(x = flipper_length_mm,\n             y = body_mass_g)) +\n  geom_point(aes(color = species, \n                 shape = species),\n            na.rm = TRUE,\n            size = 2)\np\n\n\n\n\n\n\n\n\n4.5.1 Labels\nFirstly, we can change the lables of the x and y axes and the legend with labs(). By providing the same label for color and shape the legend remains combined.\n\np + \n  labs(x = \"Flipper length (mm)\",\n       y = \"Body mass (g)\",\n       color = \"Penguin species\",\n       shape = \"Penguin species\")\n\n\n\n\n\n\n\n\n4.5.2 Axes breaks\nTo change the axis text and the grid lines you can use the breaks and labels arguments in scale_x/y_*(). breaks takes a numeric vector and labels takes a character vector. You can remove all breaks and labels with NULL.\n\np + \n  scale_x_continuous(name = NULL, breaks = NULL, labels = NULL) + \n  scale_y_continuous(name = \"Body mass (g)\", breaks = NULL, labels = NULL)\n\n\n\n\n\n\n\nYou can be quite creative with choosing breaks.\n\np +  \n  scale_x_continuous(breaks = seq(170, 230, by = 20),\n                     minor_breaks = seq(170, 230, by = 5)) + \n  scale_y_continuous(breaks = 5:13*500,\n                     minor_breaks = NULL)\n\n\n\n\n\n\n\nOr you can choose the number of breaks:\n\np + \n  scale_x_continuous(n.breaks = 4)\n\n\n\n\n\n\n\n\n4.5.3 Axes labels: scales package\nThe scales package provides useful helpers for working with axes labels. The package is generally called using the pkg_name::function() structure.\n\np + \n  scale_x_continuous(\"Flipper length\",\n                     n.breaks = 4,\n                     labels = scales::label_number(suffix = \"mm\")) + \n  scale_y_continuous(name = \"Body mass\",\n                     labels = scales::label_number(\n                       scale = 0.001,\n                       suffix = \"kg\"))\n\n\n\n\n\n\n\nOther scales formats include:\n\n\nlabel_bytes(): formats numbers as kilobytes, megabytes etc.\n\nlabel_comma(): formats numbers as decimals with commas added.\n\nlabel_currency(): formats numbers as currency.\n\nlabel_ordinal(): formats numbers in rank order: 1st, 2nd, 3rd etc.\n\nlabel_percent(): formats numbers as percentages.\n\nlabel_pvalue(): formats numbers as p-values: &lt;.05, &lt;.01, .34, etc.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "content.html#color-scales",
+    "href": "content.html#color-scales",
+    "title": "\n4  Workshop content\n",
+    "section": "\n4.6 Color scales",
+    "text": "4.6 Color scales\nTo style your plot and make it your own you will want to choose your own color palette. So far we have been using a discrete color palette (scale_color_discrete()) and to keep things simpler, we will stick with that. We can use scales::hue_pal() to recreate or access the discrete color palette used for a plot, making sure to use the length of the discrete values, as the colors used change with the length of the palette. scales::hue_pal() prints out the color hex values, while scales::show_col() creates a plot of the colors.\n\nscales::hue_pal()(3)\n## [1] \"#F8766D\" \"#00BA38\" \"#619CFF\"\nscales::show_col(scales::hue_pal()(3))\n\n\n\n\n\n\n\nOther discrete scale color functions built into ggplot2 are scale_color_grey(), scale_color_brewer() from the Color Brewer cartography palettes, and scale_color_viridis_d() from the widely used viridis color palettes. Try them out.\n\n\nscale_color_brewer() palettes: palette\n\n\nDiverging: BrBG, PiYG, PRGn, PuOr, RdBu, RdGy, RdYlBu, RdYlGn, Spectral\n\nQualitative: Accent, Dark2, Paired, Pastel1, Pastel2, Set1, Set2, Set3\n\nSequential: Blues, BuGn, BuPu, GnBu, Greens, Greys, Oranges, OrRd, PuBu, PuBuGn, PuRd, Purples, RdPu, Reds, YlGn, YlGnBu, YlOrBr, YlOrRd\n\n\n\nscale_color_viridis_d() palettes: option\n\n“magma” (or “A”), “inferno” (or “B”), “plasma” (or “C”), “viridis” (or “D”), “cividis” (or “E”), “rocket” (or “F”), “mako” (or “G”), “turbo” (or “H”)\n\n\n\n\np + \n  scale_color_grey(start = 0, end = 0.7)\n\n\n\n\n\n\n\nAn alternative is to choose colors manually, either using named R colors or hex values. The documentation site for palmerpenguins uses scale_color_manual()`\n\np + \n  scale_color_manual(values = c(\"darkorange\", \"purple\", \"cyan4\"))\n\n\n\n\n\n\n\n\n4.6.1 Color packages with paletteer\npaletteer provides a common API for accessing dozens of palette packages and thousands of color palettes. The basic structure is function(\"package::palette\").\n\nLists of palettes\n\n\npaletteer_packages: data frame of all color packages included.\n\npalettes_c_names: data frame of continuous palettes.\n\npalettes_d_names: data frame of discrete palettes.\n\npalettes_dynamic_names: data frame of dynamic discrete palettes.\n\n\nScale functions\n\nscale_color_paletteer_c()\nscale_color_paletteer_d()\nscale_color_paletteer_binned()\n\n\n\n\nlibrary(paletteer)\np + \n  scale_color_paletteer_d(\"nationalparkcolors::BlueRidgePkwy\",\n                          direction = -1)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "content.html#annotations",
+    "href": "content.html#annotations",
+    "title": "\n4  Workshop content\n",
+    "section": "\n4.7 Annotations",
+    "text": "4.7 Annotations\nThere are many ways you can annotate a plot. A first step is often to label your points or a subset of the points in the plot. geom_text() and geom_label() provide this functionality, but the ggrepel package uses an algorithmic approach to minimize overlaping the labels with the points. The Examples vignette does a good job of showing the wide range of features available in ggrepel.\nLet’s first create a subset of the penguins data, here taking a random sample.\n\nset.seed(1239)\npenguins_sub &lt;- penguins |&gt; \n  filter(!is.na(body_mass_g), !is.na(flipper_length_mm)) |&gt; \n  slice_sample(n = 5)\n\n\nlibrary(ggrepel)\np + \n  geom_text_repel(data = penguins_sub,\n                  aes(label = island),\n                  min.segment.length = 0) # Forces drawing line labels\n\n\n\n\n\n\n\n\nlibrary(ggrepel)\np + \n  geom_text_repel(data = penguins_sub,\n                  aes(label = island),\n                  min.segment.length = 0,\n                  box.padding = 0.5) # Move text further from points\n\n\n\n\n\n\n\nAnother good technique is to color the points you want to highlight and add an second larger set of points.\n\npenguins |&gt; \n  ggplot(aes(x = flipper_length_mm,\n             y = body_mass_g)) +\n  geom_point(na.rm = TRUE) + \n  geom_point(data = penguins_sub, color = \"purple\") + \n  geom_point(data = penguins_sub, color = \"purple\",\n             size = 3, shape = \"circle open\") + \n  geom_text_repel(data = penguins_sub, aes(label = species),\n                  color = \"purple\")\n\n\n\n\n\n\n\nYou can also do custom annotations with the annotate() function.\n\n# Find x and y of heaviest penguin\nbiggest &lt;- penguins |&gt; \n  slice_max(body_mass_g)\nend &lt;- c(biggest$flipper_length_mm, biggest$body_mass_g)\n\np + \n  annotate(\n    geom = \"curve\",\n    x = 200, xend = end[[1]] - 2,\n    y = 5700, yend = end[[2]],\n    curvature = -0.25,\n    arrow = arrow(length = unit(0.05, \"npc\"),\n                  type = \"closed\")\n  ) + \n  annotate(\n    geom = \"label\",\n    label = \"The heaviest penguin in\\nthe dataset is a Gentoo\\nfrom Biscoe Island\",\n    x = 200, y = 5400,\n    hjust = 1,\n    vjust = 0,\n    color = \"purple\"\n  )",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "content.html#fancy-text-with-marquee",
+    "href": "content.html#fancy-text-with-marquee",
+    "title": "\n4  Workshop content\n",
+    "section": "\n4.8 Fancy text with marquee",
+    "text": "4.8 Fancy text with marquee\nmarquee lets you add stylized text to your plots using Markdown.\n\nlibrary(marquee)\n\nhex &lt;- scales::hue_pal()(3)[3]\nmd_text &lt;- marquee_glue(\n\" ## The Biggest penguin\nThe heaviest penguin in the dataset is a **{.{hex} Gentoo}** (*Pygoscelis papua*) from Biscoe Island.\n\")\n\np + \n  annotate(\n    geom = \"curve\",\n    x = 200, xend = end[[1]] - 2,\n    y = 5700, yend = end[[2]],\n    curvature = -0.25,\n    arrow = arrow(length = unit(0.05, \"npc\"),\n                  type = \"closed\")\n  ) + \n  annotate(\n    geom = \"marquee\",\n    label = md_text,\n    x = 200, y = 5000,\n    size = 3,\n    fill = \"white\",\n    width = 0.45,\n    hjust = 1,\n    vjust = 0,\n  )",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "content.html#theme",
+    "href": "content.html#theme",
+    "title": "\n4  Workshop content\n",
+    "section": "\n4.9 Theme",
+    "text": "4.9 Theme\nThe theme affects the aesthetics of non-data components of plots: i.e. titles, labels, fonts, background, grid lines, and legends. There are many, many theme elements that can be changed, but there are two positives to keep in mind:\n\nTheme elements inherit from others hierarchically ( axis.title.x.bottom inherits from axis.title.x which inherits from axis.title, which in turn inherits from text).\nTheme code can be reused for multiple plots.\n\n\n\nIsabella Benabaye - ggplot2 Theme Elements Reference Sheet\n\n\np &lt;- p + \n  scale_color_manual(values = c(\"darkorange\",\"purple\",\"cyan4\")) +\n  scale_x_continuous(n.breaks = 4,\n                     labels = scales::label_number(suffix = \"mm\")) + \n  scale_y_continuous(labels = scales::label_number(\n                     scale = 0.001,\n                     suffix = \"kg\")) + \n  scale_color_paletteer_d(\"nationalparkcolors::BlueRidgePkwy\",\n                          direction = -1) + \n  labs(x = \"Flipper length\",\n       y = \"Body mass\",\n       color = \"Penguin species\",\n       shape = \"Penguin species\")\n## Scale for colour is already present.\n## Adding another scale for colour, which will replace the existing scale.\n\n\n4.9.1 Legend position\nggplot2 automatically creates legends when you map your data to an aesthetic scale, but you may want to remove one or more of the legends. You can do this in multiple ways:\n\ngeom_point(show.legend = FALSE)\nscale_color_discrete(guide = \"none\")\nguides(color = \"none\")\ntheme(legend.position = \"none\")\n\n\np + \n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\nWith theme you can move the legend.\n\np + \n  theme(legend.position = \"bottom\", # change position of legend\n        legend.direction = \"horizontal\") # and legend direction\n\n\n\n\n\n\n\nOr move it inside the plot.\n\np + \n  theme(legend.position = c(0.2, 0.7))\n\n\n\n\n\n\n\n\n4.9.2 Base themes\nUse the base themes to get a start.\n\np + \n  theme_minimal()\n\n\n\n\n\n\n\nHere you might adjust general aspects of the theme like the font and text size.\n\n4.9.3 System fonts\nThe packages systemfonts and ragg from Posit work together to give RStudio access to the fonts on your system and use them within plots. This works seemlessly for the most part once you install the packages and tell RStudio to use AGG as its graphic device. This is done in Settings -&gt; General -&gt; Graphics -&gt; Backend. To use ragg in knitr and quarto set knitr::opts_chunk$set(dev = \"ragg_png\").\n\n# Look at available fonts\nsystemfonts::system_fonts()\n\n\np + \n  theme_minimal(header_family = \"EB Garamond\",\n                base_family = \"Futura\",\n                base_size = 13)\n\n\n\n\n\n\n\n\nhex &lt;- paletteer_d(\"nationalparkcolors::BlueRidgePkwy\", direction = -1)\n\nmd_text &lt;- marquee_glue(\n  \"## Penguin size, Palmer Station LTER\n  Flipper length (*mm*) compared to body mass (*kg*) of **{.{hex[1]} Adelie}**, **{.{hex[2]} Chinstrap}** and **{.{hex[3]} Gentoo}** Penguins collected from 2007 to 2009 on the islands of Biscoe, Dream, and Torgersen.\n  \")\n\np + \n  theme_minimal(header_family = \"EB Garamond\",\n                base_family = \"Futura\",\n                base_size = 13) + \n  labs(title = md_text) + \n  theme(plot.title = element_marquee(size = 12, width = 1,\n                                      margin = margin(b = 2)),\n        legend.position = \"none\")",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "content.html#footnotes",
+    "href": "content.html#footnotes",
+    "title": "\n4  Workshop content\n",
+    "section": "",
+    "text": "A version of this data is now built into R as of R 4.5 (released on 11 April 2025). There are some minor differences such as the names of columns, but we will use the data from the package.↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workshop content</span>"
+    ]
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "5  Resources for ggplot2",
+    "section": "",
+    "text": "5.1 ggplot2 reference guides\nHere are a couple of quick reference guides for working with ggplot2.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Resources for ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "resources.html#ggplot2-reference-guides",
+    "href": "resources.html#ggplot2-reference-guides",
+    "title": "5  Resources for ggplot2",
+    "section": "",
+    "text": "The documentation for ggplot2 is really good and should be one of the first places you look for help.\n\nThe Introduction to ggplot2 is particularly valuable for going over the grammar of graphics.\n\nThere is also a Data visualization with ggplot2 – Cheat Sheet that provides a nice overview of commonly used aspects of ggplot2. You can view it as either a web page or a PDF.\nThe ggplot2 Theme Elements Reference Sheet by Isabella Benabaye is a wonderful for when you want to remember how to change a theme element.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Resources for ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "resources.html#more-in-depth-resources-on-ggplot2-and-visualization",
+    "href": "resources.html#more-in-depth-resources-on-ggplot2-and-visualization",
+    "title": "5  Resources for ggplot2",
+    "section": "5.2 More in depth resources on ggplot2 and visualization",
+    "text": "5.2 More in depth resources on ggplot2 and visualization\nFor more in depth discussions for how to use ggplot2 and data visualization in general, start with these resources:\n\nHadley Wickham et al., R for Data Science: Import, Tidy, Transform, Visualize, and Model Data, Second edition (O’Reilly, 2023), https://r4ds.hadley.nz.\n\nChapter 1. Data visualization: Goes through a similar scatterplot as the Getting started with visualization worksheet but also contains information about other kinds of plots such as bar plots.\nChapter 9. Layers: Provides a more in depth discussion of the grammar of graphics.\nChapter 10. Exploratory data analysis: This chapter is less about the mechanics of visualization with ggplot2 and more about why data visualization is important to understanding data.\nChapter 11. Communication: This chapter focuses on how you can polish plots to make them better communicate the point you want to make with them.\n\nKieran Healy, Data Visualization: A Practical Introduction (Princeton University Press, 2018).\nClaus Wilke, Fundamentals of Data Visualization (O’Reilly, 2019).\nAndreas, Krause, Rennie Nicola, and Tarran Brian. “Best Practices for Data Visualisation”. Version v1.0.1. February 1, 2024. https://doi.org/10.5281/ZENODO.10600718.\n\nThe Data visualization guide itself.\n\nThe most in depth option is the Second or Third edition of ggplot2: Elegant Graphics for Data Analysis. The second edition from 2016 is available through the Library. The unpublished third edition is available online at https://ggplot2-book.org.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Resources for ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "resources.html#for-inspiration",
+    "href": "resources.html#for-inspiration",
+    "title": "5  Resources for ggplot2",
+    "section": "5.3 For inspiration",
+    "text": "5.3 For inspiration\nIf you want some inspiration for using ggplot2 to make some truly unique visualizations, check out the data visualization work of Nicola Rennie.\n\nShe has recently finished a book that goe through 12 different plots she has made, showing how and why she made them: Nicola Rennie, The Art of Data Visualization with Ggplot2: The TidyTuesday Cookbook (CRC Press, 2025), https://nrennie.rbind.io/art-of-viz/.\nYou can also look over the different data challenges she has participated in.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Resources for ggplot2</span>"
+    ]
+  }
+]
