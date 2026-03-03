@@ -8,11 +8,14 @@ format:
 knitr:
   opts_chunk:
     collapse: true
+    out-width: 70%
     dev: "ragg_png"
 ---
 
 ## Get to know the data
 For this workshop we will be using is from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/). The data were collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pallter.marine.rutgers.edu/), a member of the [Long Term Ecological Research Network](https://lternet.edu/). See the [package website](https://allisonhorst.github.io/palmerpenguins/) for more details.[^1]
+
+[^1]: A version of this data is now built into R as of R 4.5 (released on 11 April 2025). There are some minor differences such as the names of columns, but we will use the data from the package.
 
 ![Artwork by @allison_horst](./files/lter_penguins.png "Title: The Palmer Penguins"){width=70% fig-alt="A cartoon-style drawing of chinstrap, gentoo and adélie penguins."}
 
@@ -47,7 +50,7 @@ glimpse(penguins)
 - `flipper_length_mm`: Numeric value in mm.
 - `body_mass_g`: Integer of mass in grams.
 - `sex`: female and male
-- `year`: Integeer from 2007 to 2009.
+- `year`: Integer from 2007 to 2009.
 
 ```{r}
 #| label: summary
@@ -59,7 +62,7 @@ Note the existence of missing data in all but `species` and `island` columns. `s
 
 ## Warming up: Exploratory plots
 
-### Distribution of a categorica variable
+### Distribution of a categorical variable
 
 ```{r}
 ggplot(penguins, aes(x = species)) +
@@ -117,7 +120,7 @@ You can create a plot with either a geom, changing the default stat if you want 
   stat_count(geom = "bar")
 ```
 
-This may not seem that interesting at first, but intermxing geoms and stats creates opportunities for plots that represent more complex forms of analysis, for instance a bar plot of the average body weight of the penguins by island. This can be written using either `geom_bar()` or `stat_summary()`.
+This may not seem that interesting at first, but intermixing geoms and stats creates opportunities for plots that represent more complex forms of analysis, for instance a bar plot of the average body weight of the penguins by island. This can be written using either `geom_bar()` or `stat_summary()`.
 
 ```{r}
 #| label: bar-vs-stat
@@ -226,13 +229,37 @@ p +
                      expand = expansion(mult = c(0, 0.05)))
 ```
 
-The result is clearly somethig we did not intend. This is because setting limits with `scale_x/y_*()` **subsets data**; all values outside the range become `NA`. This will lead to changes in the data for lines or polygons. To zoom in on the data you need to use `coord_cartesian()` with the `xlim` or `ylim` argument.
+The result is clearly something we did not intend. This is because setting limits with `scale_x/y_*()` **subsets data**; all values outside the range become `NA`. This will lead to changes in the data for lines or polygons. To zoom in on the data you need to use `coord_cartesian()` with the `xlim` or `ylim` argument.
 
 ```{r}
 p + 
   scale_x_discrete(expand = expansion(0)) + 
   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) + 
   coord_cartesian(ylim = c(2500, NA))
+```
+
+### Save the plots for later
+
+```{r}
+p1 <- last_plot()
+
+# Create similar plot with flipper_length_mm
+min(penguins$flipper_length_mm, na.rm = TRUE)
+
+p2 <- penguins |> 
+  filter(!is.na(flipper_length_mm)) |> 
+  ggplot(aes(x = island, y = flipper_length_mm, fill = species)) +
+  geom_bar(stat = "summary", fun = "mean", width = 1,
+           position = position_dodge2(preserve = "single")) + 
+  stat_summary(geom = "errorbar",
+               fun.data = mean_se,
+               width = 1,
+               position = position_dodge2(preserve = "single",
+                                          padding = 0.6)) + 
+  scale_x_discrete(expand = expansion(0)) + 
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) + 
+  coord_cartesian(ylim = c(150, NA))
+p2
 ```
 
 ## Axes scales and guides
@@ -245,12 +272,12 @@ p <- penguins |>
   geom_point(aes(color = species, 
                  shape = species),
             na.rm = TRUE,
-            size = 2)
+            size = 2, alpha = 0.8)
 p
 ```
 
 ### Labels
-Firstly, we can change the lables of the x and y axes and the legend with `labs()`. By providing the same label for `color` and `shape` the legend remains combined.
+Firstly, we can change the labels of the x and y axes and the legend with `labs()`. By providing the same label for `color` and `shape` the legend remains combined.
 
 ```{r}
 p + 
@@ -332,7 +359,7 @@ p +
   scale_color_grey(start = 0, end = 0.7)
 ```
 
-An alternative is to choose colors manually, either using [named R colors](https://r-charts.com/colors/) or hex values. The [documentation site for palmerpenguins](https://allisonhorst.github.io/palmerpenguins/index.html) uses scale_color_manual()`
+An alternative is to choose colors manually, either using [named R colors](https://r-charts.com/colors/) or hex values. The [documentation site for palmerpenguins](https://allisonhorst.github.io/palmerpenguins/index.html) uses `scale_color_manual()`
 
 ```{r}
 p + 
@@ -474,14 +501,13 @@ The theme affects the aesthetics of non-data components of plots: i.e. titles, l
 
 ```{r}
 p <- p + 
-  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  scale_color_paletteer_d("nationalparkcolors::BlueRidgePkwy",
+                          direction = -1) + 
   scale_x_continuous(n.breaks = 4,
                      labels = scales::label_number(suffix = "mm")) + 
   scale_y_continuous(labels = scales::label_number(
                      scale = 0.001,
                      suffix = "kg")) + 
-  scale_color_paletteer_d("nationalparkcolors::BlueRidgePkwy",
-                          direction = -1) + 
   labs(x = "Flipper length",
        y = "Body mass",
        color = "Penguin species",
@@ -528,7 +554,7 @@ p +
 Here you might adjust general aspects of the theme like the font and text size.
 
 ### System fonts
-The packages [systemfonts](https://systemfonts.r-lib.org) and ragg from Posit work together to give RStudio access to the fonts on your system and use them within plots. This works seemlessly for the most part once you install the packages and tell RStudio to use AGG as its graphic device. This is done in Settings -> General -> Graphics -> Backend. To use ragg in knitr and quarto set `knitr::opts_chunk$set(dev = "ragg_png")`.
+The packages [systemfonts](https://systemfonts.r-lib.org) and ragg from Posit work together to give RStudio access to the fonts on your system and use them within plots. This works seamlessly for the most part once you install the packages and tell RStudio to use **AGG** as its graphic device. This is done in `Settings -> General -> Graphics -> Backend`. To use ragg in knitr and quarto set `knitr::opts_chunk$set(dev = "ragg_png")`.
 
 ```{r}
 #| eval: false
@@ -545,6 +571,7 @@ p +
 
 
 ```{r}
+#| out-width: 100%
 hex <- paletteer_d("nationalparkcolors::BlueRidgePkwy", direction = -1)
 
 md_text <- marquee_glue(
@@ -552,7 +579,7 @@ md_text <- marquee_glue(
   Flipper length (*mm*) compared to body mass (*kg*) of **{.{hex[1]} Adelie}**, **{.{hex[2]} Chinstrap}** and **{.{hex[3]} Gentoo}** Penguins collected from 2007 to 2009 on the islands of Biscoe, Dream, and Torgersen.
   ")
 
-p + 
+p3 <- p + 
   theme_minimal(header_family = "EB Garamond",
                 base_family = "Futura",
                 base_size = 13) + 
@@ -560,8 +587,93 @@ p +
   theme(plot.title = element_marquee(size = 12, width = 1,
                                       margin = margin(b = 2)),
         legend.position = "none")
+
+p3
 ```
 
 
-[^1]: A version of this data is now built into R as of R 4.5 (released on 11 April 2025). There are some minor differences such as the names of columns, but we will use the data from the package.
+## Saving the plot
+The most straightforward way to save the plots you make is with `ggsave()`. It is quite simple to save the plot. The difficult part comes with creating figures that are reproducible and are the right size and shape. The key to reproducibility is giving plots a set size and aspect ration, but choosing the right one can be an iterative process. The larger size image you make, the smaller the elements of your plot will be. Therefore, you may need to do some back and forth with the size of plot elements and the size of the plot.
 
+A nice way to maintain consistent looking plots in `ggsave()` is to set `width` and then set `height` as a ratio of `width`.
+
+```{r}
+#| eval: false
+ggsave(filename = "fig_output/penguin-scatterplot.png",
+       plot = p3,
+       width = 6,
+       height = 0.67 * 6)
+```
+
+### PNG vs PDF
+People have been working hard to make it easier to work with fonts in visualization in R, but there are still important differences. Using the AGG device for PNG files makes it possible to create raster graphics. See this [blog post on Fonts in R](https://tidyverse.org/blog/2025/05/fonts-in-r/) for more information.
+
+To produce PDF graphics that use custom fonts you may need to use `device = cairo_pdf` in `ggsave()`. See [this post from Andrew Heiss](https://www.andrewheiss.com/blog/2017/09/27/working-with-r-cairo-graphics-custom-fonts-and-ggplot/) about Cario graphics for PDFs.
+
+```{r}
+#| eval: false
+ggsave(filename = "fig_output/penguin-scatterplot.pdf",
+       plot = p3,
+       width = 6,
+       height = 0.67 * 6,
+       device = cairo_pdf)
+```
+
+## Putting plots together with patchwork
+[patchwork](https://patchwork.data-imaginist.com/index.html) provides a robust way to combine separate ggplots into the same graphic.
+
+First, let's style the barplots we made earlier to match the scatterplot. `set_theme()` resets the current theme. Alternatively you can provide a name, such as `my_theme` to theme elements and use it in a plot with the `+`.
+
+```{r}
+set_theme(theme_minimal(header_family = "EB Garamond",
+                base_family = "Futura",
+                base_size = 13))
+
+p1 <- p1 + 
+  scale_y_continuous(labels = scales::label_number(
+                     scale = 0.001,
+                     suffix = "kg")) + 
+  scale_fill_paletteer_d("nationalparkcolors::BlueRidgePkwy",
+                          direction = -1) + 
+  labs(x = "Island", y = "Body mass") + 
+  theme(legend.position = "none")
+
+p2 <- p2 + 
+  scale_fill_paletteer_d("nationalparkcolors::BlueRidgePkwy",
+                          direction = -1) + 
+  labs(x = "Island", y = "Flipper length (*mm*)") + 
+  theme(axis.title.y = element_marquee(),
+        legend.position = "none")
+```
+
+### Composing plots
+- `+`: Add plots in row order
+- `|`: Place plots beside each other
+- `-`: Used to keep each side from each other when building complex plots
+- `/`: Place plots on top of each other
+- `&`: Apply elements to all subplots in the composition
+- `*`: Apply elements to all subplots in the current nesting level
+  - Using `+` to add elements of a plot will affect the last plot
+- `()`: Use parentheses to group plots
+
+```{r}
+#| fig-asp: 1
+#| out-width: 100%
+library(patchwork)
+
+p3 / (p1 | p2) + 
+  plot_layout(height = c(3, 2))
+
+```
+
+Let's save the final plot.
+
+```{r}
+#| eval: false
+ggsave(filename = "patchwork-plot.png",
+        width = 6,
+        height = 6)
+```
+
+## Conclusion
+There are many more things that you can do with ggplot2. This workshop is meant to provide a starting point. Check out the [Resources for ggplot2 page](resources.qmd) for starting points on what you can do with ggplot2.
