@@ -1,10 +1,10 @@
 # Data visualization with ggplot2
 
-Workshop website for [Data visualization with ggplot2](https://calendar.lib.vt.edu/event/16172430) at Virginia Tech held on Tuesday, 3 March 2026, 12pm to 2pm.
+Workshop website for [Data visualization with ggplot2](https://calendar.lib.vt.edu/event/17572433) at Virginia Tech held on Tuesday, 27 October 2026, 2pm to 5pm.
 
 This hands-on, participatory workshop is designed for those with basic R programming experience that are looking to take their data visualization skills to the next level. Join us to learn about making high-quality, reproducible data visualizations with [R](https://www.r-project.org/) and [ggplot2](https://ggplot2.tidyverse.org/). Attendees will practice making different kinds of plots, modifying color scales, and styling plots to make publication-ready visualizations.
 
-The workshop is open to anyone, but learners should be familiar with programming in R and ggplot2 equivalent to the [Intro to R and RStudio](https://calendar.lib.vt.edu/event/16053032) and [Data wrangling and visualization with R](https://calendar.lib.vt.edu/event/16053104) workshops or one of the [Carpentries lessons](https://carpentries.org/lessons/) on R.
+The workshop is open to anyone, but learners should be familiar with programming in R and ggplot2 equivalent to the [Intro to R and RStudio](https://calendar.lib.vt.edu/event/17572381) and [Data wrangling and visualization with R](https://calendar.lib.vt.edu/event/17572402) workshops or one of the [Carpentries lessons](https://carpentries.org/lessons/) on R.
 
 ### Learning outcomes
 - Be able to make various types of plots with ggplot2, including barplots, histograms, boxplots, and scatterplots.
@@ -14,10 +14,10 @@ The workshop is open to anyone, but learners should be familiar with programming
 
 ## Setup
 
-Please download R and RStudio before the workshop. If you already have R and RStudio installed, check for updates in [RStudio](https://posit.co/download/rstudio-desktop/) and make sure you have a recent version of [R](https://cran.r-project.org/). The current version of R as of 3 March 2026 is 4.5.2. Please make sure that you have **at least version 4.3** or greater.
+Please download R and RStudio before the workshop. If you already have R and RStudio installed, check for updates in [RStudio](https://docs.posit.co/ide/user/download.html) and make sure you have a recent version of [R](https://cran.r-project.org/). The current version of R as of October 2026 is 4.6.1. Please make sure that you have **at least version 4.3** or greater.
 
 - [Download R](https://cran.r-project.org/)
-- [Download RStudio](https://posit.co/download/rstudio-desktop/)
+- [Download RStudio](https://docs.posit.co/ide/user/download.html)
 
 ## Install packages for the workshop
 
