@@ -2,16 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jesse Sadler">
-<meta name="dcterms.date" content="2026-03-03">
+<meta name="dcterms.date" content="2026-10-27">
 <title>Data visualization with ggplot2</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -66,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./rstudio-guide.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-819e9ac62654b264625359d69f414092.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-a212f82455aac3d592bf2a11bdd625f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -197,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-03-03</p>
+      <p class="date">2026-10-27</p>
     </div>
   </div>
   
@@ -209,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 <section id="welcome" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="welcome">Welcome</h2><p><img src="ggplot2.png" title="Data visualization with ggplot2" class="quarto-cover-image nolightbox img-fluid"></p>
 <p>This hands-on, participatory workshop is designed for those with basic R programming experience that are looking to take their data visualization skills to the next level. Join us to learn about making high-quality, reproducible data visualizations with <a href="https://www.r-project.org/">R</a> and <a href="https://ggplot2.tidyverse.org/">ggplot2</a>. Attendees will practice making different kinds of plots, modifying color scales, and styling plots to make publication-ready visualizations.</p>
-<p>The workshop is open to anyone, but learners should be familiar with programming in R and ggplot2 equivalent to the <a href="https://calendar.lib.vt.edu/event/16053032">Intro to R and RStudio</a> and <a href="https://calendar.lib.vt.edu/event/16053104">Data wrangling and visualization with R</a> workshops or one of the <a href="https://carpentries.org/lessons/">Carpentries lessons</a> on R.</p>
+<p>The workshop is open to anyone, but learners should be familiar with programming in R and ggplot2 equivalent to the <a href="https://calendar.lib.vt.edu/event/17572381">Intro to R and RStudio</a> and <a href="https://calendar.lib.vt.edu/event/17572402">Data wrangling and visualization with R</a> workshops or one of the <a href="https://carpentries.org/lessons/">Carpentries lessons</a> on R.</p>
 <section id="learning-outcomes" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="learning-outcomes">Learning outcomes</h3>
 <ul>
 <li>Be able to make various types of plots with ggplot2, including barplots, histograms, boxplots, and scatterplots.</li>
@@ -217,12 +222,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Gain familiarity with different ways to highlight and annotate data within plots.</li>
 <li>Use ggplot2’s theming system to style plots in preparation for publication.</li>
 </ul></section></section><section id="setup" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="setup">Setup</h2>
-<p>Please download R and RStudio before the workshop. If you already have R and RStudio installed, check for updates in <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> and make sure you have a recent version of <a href="https://cran.r-project.org/">R</a>. The current version of R as of 3 March 2026 is 4.5.2. Please make sure that you have <strong>at least version 4.3</strong> or greater.</p>
+<p>Please download R and RStudio before the workshop. If you already have R and RStudio installed, check for updates in <a href="https://docs.posit.co/ide/user/download.html">RStudio</a> and make sure you have a recent version of <a href="https://cran.r-project.org/">R</a>. The current version of R as of October 2026 is 4.6.1. Please make sure that you have <strong>at least version 4.3</strong> or greater.</p>
 <ul>
 <li><a href="https://cran.r-project.org/">Download R</a></li>
-<li><a href="https://posit.co/download/rstudio-desktop/">Download RStudio</a></li>
+<li><a href="https://docs.posit.co/ide/user/download.html">Download RStudio</a></li>
 </ul></section><section id="install-packages-for-the-workshop" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="install-packages-for-the-workshop">Install packages for the workshop</h2>
-<p>There are a large number of packages that extend the capabilities of ggplot2. We will use some of the more widely used ones in this workshop and the materials will point to other options. You can install the packages in the console in RStudio or using the Packages tab in the bottom-right pane in RStudio.</p>
+<p>There are a large number of packages that extend the capabilities of ggplot2. We will use some of the more widely used ones in this workshop, and the materials will point to other options. You can install the packages in the console in RStudio or use the Packages tab in the bottom-right pane in RStudio.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tidyverse"</span>, <span class="st">"palmerpenguins"</span>, <span class="st">"ggrepel"</span>, <span class="st">"paletteer"</span>,</span>
 <span>                   <span class="st">"systemfonts"</span>, <span class="st">"marquee"</span>, <span class="st">"patchwork"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
